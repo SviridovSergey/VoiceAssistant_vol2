@@ -109,7 +109,7 @@ def get_weather(*args: tuple):
         weather = obs.weather
 
     except Exception as e:
-        logging.error(f'Я хуй его {e}')
+        play_voice_assistant_speechP(f'Я хуй его {e}')
         play_voice_assistant_speech('Я хуй его')
         traceback.print_exc()
         return
@@ -119,10 +119,10 @@ def get_weather(*args: tuple):
     wind_speed = weather.wind()["speed"]
     pressure = int(weather.pressure["press"] / 1.333)
 
-    logging.info(f"Погода в {city_name}:\n * Статус: {status}\n * Скорость ветра (m/s): {wind_speed}\n * Температура (°C): {temp}\n * Давление (mm Hg): {pressure}")
+    play_voice_assistant_speech(f"Погода в {city_name}:\n * Статус: {status}\n * Скорость ветра (m/s): {wind_speed}\n * Температура (°C): {temp}\n * Давление (mm Hg): {pressure}")
 
     play_voice_assistant_speech(f"Это {status} в {city_name}")
-    play_voice_assistant_speech(f"Пидр, температура в {temp} °C")
+    play_voice_assistant_speech(f"Пидр, температура {temp} °C")
     play_voice_assistant_speech(f"Пидр, скорость ветра в {wind_speed} m/s")
     play_voice_assistant_speech(f"Пидр, давление в {pressure} mm Hg")
 
